@@ -1,8 +1,4 @@
 <div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-
   <h2>Beer Info</h2>
   <ul class='beers'>
     <li [class.selected]='beer === selectedBeer' *ngFor='let beer of beers' (click)='onSelect(beer)'>
