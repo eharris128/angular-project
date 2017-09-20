@@ -1,32 +1,36 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Component } from "@angular/core";
+import { OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
-import { Beer } from './beer';
-import { BeerService } from './beer.service';
+import { Beer } from "./beer";
+import { BeerService } from "./beer.service";
 
 @Component({
-  selector: 'my-beers',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: "my-beers",
+  templateUrl: "./beers.component.html",
+  styleUrls: ["./beers.component.css"],
   providers: [BeerService]
 })
 export class BeersComponent implements OnInit {
+  beers: Beer[];
+  selectedBeer: Beer;
+
+  constructor(private beerService: BeerService, private router: Router) {}
+
   ngOnInit(): void {
     this.getBeers();
   }
-  constructor(private beerService: BeerService) {}
-  beers: Beer[];
-  selectedBeer: Beer;
-  beer: Beer = {
-    name: 'Modelo Especial',
-    abv: 4.5,
-    style: 'Smooth',
-    id: 1
-  }
+
   onSelect(beer: Beer): void {
     this.selectedBeer = beer;
   }
+
   getBeers(): void {
-    this.beerService.getBeers().then(beers => this.beers = beers)
+    this.beerService.getBeers().then(beers => (this.beers = beers));
   }
+
+  gotoDetail(): void {
+    this.router.navigate(["/detail", this.selectedBeer.id]);
+  }
+  
 }

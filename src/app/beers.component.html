@@ -7,5 +7,10 @@
       <span class='badge'>{{beer.name}}</span>
     </li>
   </ul>
-   <beer-detail [beer]='selectedBeer'></beer-detail> 
+  <div *ngIf="selectedBeer">
+  <h2>
+    {{selectedBeer.name | uppercase}} is the beer I want to learn about.
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
 </div>
