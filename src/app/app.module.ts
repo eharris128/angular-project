@@ -8,6 +8,8 @@ import { BeerService } from "./beer.service";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 
 import { AppRoutingModule } from "./app-routing.module";
+// Import HttpClientModule from @angular/common/http
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { AppRoutingModule } from "./app-routing.module";
     BeersComponent,
     DashboardComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,  HttpClientModule],
   providers: [BeerService],
   bootstrap: [AppComponent]
 })
