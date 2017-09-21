@@ -4,7 +4,9 @@ import { Router } from "@angular/router";
 
 import { Beer } from "./beer";
 import { BeerService } from "./beer.service";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+
+import "rxjs/add/operator/retry";
 
 @Component({
   selector: "my-beers",
@@ -15,7 +17,7 @@ import { HttpClient } from "@angular/common/http";
 export class BeersComponent implements OnInit {
   beers: Beer[];
   selectedBeer: Beer;
-  results: object;
+  results: string[];
 
   constructor(
     private beerService: BeerService,
@@ -25,12 +27,33 @@ export class BeersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBeers();
-    interface BeerResponse {results: object}
+    interface BeerResponse {
+      results: object;
+    }
     this.http
-      .get("https://quiet-lake-53110.herokuapp.com/beers")
-      .subscribe(data => {
-        console.log(typeof data);
-      });
+      .get<BeerResponse>("http://localhost:8080/beers")
+      // .get<BeerResponse>("https://quiet-lake-53110.herokuapp.com/beers")
+      .retry(3)
+      .subscribe(
+        data => {
+          this.results = [];
+          for (let prop in data) {
+            for (let i = 0; i < data[prop].length; i++) {
+              this.results.push(data[prop][i]);
+            }
+          }
+          console.log("Results: ", this.results);
+        },
+        (err: HttpErrorResponse) => {
+          if (err.error instanceof Error) {
+            console.log("An error occurred.", err.error.message);
+          } else {
+            console.log(
+              `Backend returned code ${err.status}, body was ${err.error}`
+            );
+          }
+        }
+      );
   }
 
   onSelect(beer: Beer): void {
