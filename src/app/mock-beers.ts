@@ -8,5 +8,9 @@ export const BEERS: Beer[] = [
   { name: 'Carolina Blonde', abv: 4.3, style: 'Cream Ale', id: 4},
   { name: 'Nashville Lager Beer', abv: 4.8, style: 'Lager - American Light', id: 5},
   { name: 'McSorley\'s Irish Pale Ale', abv: 5.5, style: 'Red Ale - Irish', id: 6},
-  { name: 'Warsteiner Premium Verum', abv: 4.8, style: 'German Pilsner', id: 7}
+  { name: 'Warsteiner Premium Verum', abv: 4.8, style: 'German Pilsner', id: 7},
+  { name: 'Bud Light', abv: 4, style: 'Light Beer', id: 8},
+  { name: 'Bud Platinum', abv: 4, style: 'Beer', id: 9},
+  { name: 'Coors', abv: 4, style: 'Beer', id: 10},
+  { name: 'Keystone', abv: 4, style: 'Beer', id: 11}
 ]

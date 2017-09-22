@@ -16,7 +16,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.beerService.getBeers()
-      .then(beers => this.beers = beers.slice(0,2))
+      .then(beers => {
+        return this.beers = beers.slice(-4)
+      })
   }
 
 }
