@@ -8,15 +8,17 @@ import { BeerService } from "./beer.service";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 
 import { AppRoutingModule } from "./app-routing.module";
-
+import { LoginComponent } from './login/login.component';
+import { FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     BeerDetailComponent,
     BeersComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [BeerService],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 <div *ngIf='beer'>
   <h2>{{beer.name}} details:</h2>
-  <div>Beer Style:{{beer.style}}</div>
-  <div>Beer ABV: {{beer.abv}}%</div>
+  <div class='details'>Beer Style: {{beer.style}}</div>
+  <div class='details'>Beer ABV: {{beer.abv}}%</div>
   <button (click)="goBack()">Back</button>
 </div>

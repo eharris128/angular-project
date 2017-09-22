@@ -2,8 +2,8 @@
   <h2>Beer Info</h2>
 
   <div class='beers'>
-    <div *ngFor='let beer of beers; let i=index'>
-      <span [class.selected]='beer === selectedBeer' (click)='onSelect(beer)' *ngIf='i<5' class='badge'>{{beer.name}}</span>
+    <div class='beer-container' *ngFor='let beer of beers; let i=index'>
+      <p [class.selected]='beer === selectedBeer' (click)='onSelect(beer)' *ngIf='i<5' class='badge'>{{beer.name}}</p>
     </div>
   </div>
   <!-- <ul class='beers'>
