@@ -1,14 +1,20 @@
 <div style="text-align:center">
   <h2>Beer Info</h2>
-  <ul class='beers'>
-    <li [class.selected]='beer === selectedBeer' *ngFor='let beer of beers' (click)='onSelect(beer)'>
+
+  <div class='beers'>
+    <div *ngFor='let beer of beers; let i=index'>
+      <span [class.selected]='beer === selectedBeer' (click)='onSelect(beer)' *ngIf='i<5' class='badge'>{{beer.name}}</span>
+    </div>
+  </div>
+  <!-- <ul class='beers'>
+    <li [class.selected]='beer === selectedBeer' *ngFor='let beer of beers; let i=index' (click)='onSelect(beer)'>
       <span class='badge'>{{beer.name}}</span>
     </li>
-  </ul>
+  </ul> -->
   <div *ngIf="selectedBeer">
-  <h2>
-    See details for: {{selectedBeer.name}}.
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
-</div>
+    <h2>
+      See details for: {{selectedBeer.name}}.
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+  </div>
 </div>
