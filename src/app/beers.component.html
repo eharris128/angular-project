@@ -2,14 +2,12 @@
   <h2>Beer Info</h2>
   <ul class='beers'>
     <li [class.selected]='beer === selectedBeer' *ngFor='let beer of beers' (click)='onSelect(beer)'>
-      <!-- <span class='badge'>{{beer.abv}}</span>
-      <span class='badge'>{{beer.style}}</span> -->
       <span class='badge'>{{beer.name}}</span>
     </li>
   </ul>
   <div *ngIf="selectedBeer">
   <h2>
-    {{selectedBeer.name | uppercase}} is the beer I want to learn about.
+    See details for: {{selectedBeer.name}}.
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>
